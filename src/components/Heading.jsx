@@ -32,25 +32,26 @@ const StyledHeading = styled.div`
         background-color: ${props => {return props.theme.toggleBackground}};
         border-radius: 20px;
         position: relative;
+        cursor: pointer;
         > .toggle-switch-box {
           transform: translate(-50%, -50%);
           width: 1.20rem;
           height: 1.20rem;
           background-color: ${props => {return props.theme.toggle}};
           border-radius: 50%;
-          transition: 0.5s;
+          transition: 0.25s;
           position: absolute;
           top: 50%;
-          ${props => {
+          left: ${props => {
             switch(props.currentTheme) {
               case 0:
-                return `left: 22.5%;`
+                return `22.5%`
               case 1:
-                return `left: 49%;`
+                return `50%`
               case 2:
-                return `left: 76%;`
+                return `77.5%`
             }
-          }}
+          }};
         }
       }
     }
