@@ -17,7 +17,6 @@ const themes = [{
   keyBackgroundDigits: 'hsl(30, 25%, 89%)',
   keyShadowDigits: 'hsl(28, 16%, 65%)',
   toggle: 'hsl(6, 63%, 50%)',
-  text: 'hsl(0, 0, 100%)',
   keyText: 'hsl(221, 14%, 31%)'
 },
 
@@ -33,7 +32,6 @@ const themes = [{
   keyBackgroundDigits: 'hsl(45, 7%, 89%)',
   keyShadowDigits: 'hsl(35, 11%, 61%)',
   toggle: 'hsl(25, 98%, 40%)',
-  text: 'hsl(0, 0, 100%)',
   keyText: 'hsl(60, 10%, 19%)'
 },
 
@@ -49,7 +47,6 @@ const themes = [{
   keyBackgroundDigits: 'hsl(268, 47%, 21%)',
   keyShadowDigits: 'hsl(290, 70%, 36%)',
   toggle: 'hsl(176, 100%, 44%)',
-  text: 'hsl(0, 0, 100%)',
   keyText: 'hsl(52, 100%, 62%)'
 }]
 
@@ -70,6 +67,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 32px;
     font-family: 'League Spartan', sans-serif;
     background-color: ${props => {return props.theme.mainBackground}};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
   }
 
 `
@@ -84,7 +85,10 @@ function App() {
   return (
     <ThemeProvider theme={themes[theme]}>
       <GlobalStyle />
-      <Container />
+      <Container 
+        currentTheme={theme}
+        setTheme={setTheme}
+      />
     </ThemeProvider>
   )
 }
