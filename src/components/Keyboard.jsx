@@ -64,11 +64,49 @@ const keys = [{sign: '7', class: 'digit'}, {sign: '8', class: 'digit'}, {sign: '
 {sign: '-', class: 'digit'}, {sign: '.', class: 'digit'}, {sign: '0', class: 'digit'}, {sign: '/', class: 'digit'},
 {sign: 'x', class: 'digit'}, {sign: 'RESET', class: 'function'}, {sign: '=', class: 'equals'}]
 
+const handleButtons = (e, callback) => {
+  switch(true) {
+    case(Number(e.target.innerHTML >= 0) && Number(e.target.innerHTML) <= 9 || e.target.innerHTML === '.'):
+      return callback(prev => {
+        if(prev) {
+          if(e.target.innerHTML === '.') {
+            if(prev[prev.length-1] === '.') return prev
+            else return prev += e.target.innerHTML
+          } else {
+            return prev += e.target.innerHTML
+          }
+        } else {
+          return e.target.innerHTML
+        }
+      })
+    case(e.target.innerHTML === '+' || e.target.innerHTML === '-' || e.target.innerHTML === 'x' || e.target.innerHTML === '/'):
+      return callback(prev => {
+        if(prev[prev.length-1].match('[x/+-]')) return prev
+        else return prev += e.target.innerHTML
+      })
+    case (e.target.innerHTML === 'RESET'):
+      return callback(prev => null)
+    case (e.target.innerHTML === 'DEL'):
+      return callback(prev => {
+        return prev.slice(0, prev.length-1)
+      })
+    case (e.target.innerHTML === '='):
+      return callback(prev => {
+        let expression = ''
+        for (let x = 0; x < prev.length; x++) {
+          if(prev[x] === 'x') expression += '*'
+          else expression += prev[x]
+        }
+        return String(eval(expression))
+      })
+  }
+}
+
 function Keyboard(props) {
   return (
     <StyledKeyboard currentTheme={props.currentTheme}>
       {keys.map(item => {
-        return <div className={item.class} key={item.sign}>{item.sign}</div>
+        return <div className={item.class} onClick={e => {handleButtons(e, props.setExpression)}} key={item.sign}>{item.sign}</div>
       })}
     </StyledKeyboard>
   )
