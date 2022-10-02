@@ -19,7 +19,9 @@ const StyledKeyboard = styled.div`
     align-items: center;
     border-radius: 5px;
     cursor: pointer;
-    transition: 1s;
+    &:active {
+      transform: translateY(0.25rem);
+    }
   }
   > .digit {
     background-color: ${props => {return props.theme.keyBackgroundDigits}};

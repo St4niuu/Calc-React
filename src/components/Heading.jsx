@@ -12,9 +12,7 @@ const StyledHeading = styled.div`
     switch(props.currentTheme) {
       case 0:
         return `white`
-      case 1:
-        return props.theme.keyText
-      case 2:
+      default:
         return props.theme.keyText
     }
   }};

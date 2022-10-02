@@ -83,6 +83,7 @@ function App() {
 
 
   const [theme, setTheme] = useState(0)
+  const [expression, setExpression] = useState()
 
   return (
     <ThemeProvider theme={themes[theme]}>
@@ -90,6 +91,8 @@ function App() {
       <Container 
         currentTheme={theme}
         setTheme={setTheme}
+        expression={expression}
+        setExpression={setExpression}
       />
     </ThemeProvider>
   )

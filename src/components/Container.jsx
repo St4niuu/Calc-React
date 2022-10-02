@@ -30,9 +30,14 @@ function Container(props) {
         currentTheme={props.currentTheme}
         setTheme={props.setTheme}
       />
-      <Display />
+      <Display 
+        expression={props.expression}
+        currentTheme={props.currentTheme}
+      />
       <Keyboard 
         currentTheme={props.currentTheme}
+        expression={props.expression}
+        setExpression={props.setExpression}
       />
     </StyledContainer>
   )

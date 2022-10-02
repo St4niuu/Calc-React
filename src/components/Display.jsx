@@ -8,13 +8,27 @@ const StyledDisplay = styled.div`
   background-color: ${props => {return props.theme.screenBackground}};
   border-radius: 15px;
   transition: 1s;
+  padding: 1.5rem;
+  overflow: hidden;
+  font-size: 150%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: ${props => {
+    switch(props.currentTheme) {
+      case 0:
+        return `white`
+      default:
+        return props.theme.keyText
+    }
+  }};
 
 `
 
-function Display() {
+function Display(props) {
   return (
-    <StyledDisplay>
-      
+    <StyledDisplay currentTheme={props.currentTheme}>
+      {props.expression}
     </StyledDisplay>
   )
 }
