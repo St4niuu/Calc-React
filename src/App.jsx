@@ -70,7 +70,6 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 1s;
     @media (max-height: 620px) {
       align-items: flex-start;
     }

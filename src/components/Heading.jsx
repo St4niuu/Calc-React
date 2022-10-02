@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// CSS TO CORRECTION
-
 const StyledHeading = styled.div`
 
   display: flex;
@@ -10,7 +8,16 @@ const StyledHeading = styled.div`
   align-items: center;
   width: 100%;
   height: 10%;
-  color: white;
+  color: ${props => {
+    switch(props.currentTheme) {
+      case 0:
+        return `white`
+      case 1:
+        return props.theme.keyText
+      case 2:
+        return props.theme.keyText
+    }
+  }};
   > .toggle-box {
     width: fit-content;
     height: 3rem;
